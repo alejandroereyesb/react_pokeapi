@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('');
+
+function SearchBar() {
+  const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (query.trim()) {
-      onSearch(query.trim());
+    if (name.trim()) {
+      navigate(`/pokemon-details?name=${name.trim()}`);
     }
   };
 
@@ -14,8 +17,8 @@ function SearchBar({ onSearch }) {
       <input
         type="text"
         placeholder="Enter Pokemon name"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
     </div>

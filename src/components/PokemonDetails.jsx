@@ -9,6 +9,7 @@ function PokemonDetails() {
 
   useEffect(() => {
     const fetchPokemon = async () => {
+      // http://localhost:5173/pokemon-details?name=snorlax
       const name = searchParams.get("name");
       if (!name) {
         setError("No Pokemon name provided.");
